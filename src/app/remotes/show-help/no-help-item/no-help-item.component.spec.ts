@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed, getTestBed } from '@angular/core/testing'
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed'
-import { TranslateTestingModule } from 'ngx-translate-testing'
+import { TranslateService } from '@ngx-translate/core'
 
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog'
 
 import { NoHelpItemComponent } from './no-help-item.component'
 import { NoHelpItemHarness } from './no-help-item.harness'
+import { provideTranslateTestingService } from '@onecx/angular-testing'
 
 describe('NoHelpItemComponent', () => {
   let component: NoHelpItemComponent
@@ -22,16 +23,19 @@ describe('NoHelpItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [],
-      imports: [
-        NoHelpItemComponent,
-        TranslateTestingModule.withTranslations({
-          de: require('/src/assets/i18n/de.json'),
-          en: require('/src/assets/i18n/en.json')
-        }).withDefaultLanguage('en')
-      ],
-      providers: [DynamicDialogConfig, DynamicDialogRef]
+      imports: [NoHelpItemComponent],
+      providers: [
+        DynamicDialogConfig,
+        DynamicDialogRef,
+        provideTranslateTestingService({
+          en: require('../../../../assets/i18n/en.json')
+        })
+      ]
     }).compileComponents()
 
+    const translate = TestBed.inject(TranslateService)
+    translate.setDefaultLang('en')
+    translate.use('en')
     getTestBed().inject(DynamicDialogConfig).data = { helpArticleId: helpArticleId }
   })
 
