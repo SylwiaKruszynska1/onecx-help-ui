@@ -26,12 +26,12 @@ import { AngularAcceleratorModule } from '@onecx/angular-accelerator'
 
 bootstrapRemoteComponent(OneCXShowHelpComponent, 'ocx-show-help-component', environment.production, [
   { provide: REMOTE_COMPONENT_CONFIG, useValue: new ReplaySubject<RemoteComponentConfig>(1) },
+  provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
   provideTranslateService({
     fallbackLang: 'en',
     loader: provideTranslateLoader(OnecxTranslateLoader),
     missingTranslationHandler: provideMissingTranslationHandler(MultiLanguageMissingTranslationHandler)
   }),
-  provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
   provideHttpClient(withInterceptorsFromDi()),
   importProvidersFrom(AngularAcceleratorModule, AngularAuthModule, BrowserAnimationsModule, TranslateModule),
   provideThemeConfig()

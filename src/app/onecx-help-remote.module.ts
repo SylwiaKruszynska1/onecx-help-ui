@@ -46,12 +46,12 @@ const routes: Routes = [
       return initializerFn()
     }),
     provideHttpClient(withInterceptorsFromDi()),
+    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
     provideTranslateService({
       fallbackLang: 'en',
       loader: provideTranslateLoader(OnecxTranslateLoader),
       missingTranslationHandler: provideMissingTranslationHandler(MultiLanguageMissingTranslationHandler)
     }),
-    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
     provideThemeConfig()
   ]
 })

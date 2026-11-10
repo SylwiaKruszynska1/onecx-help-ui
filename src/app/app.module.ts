@@ -39,12 +39,12 @@ const routes: Routes = [
   providers: [
     { provide: APP_CONFIG, useValue: environment },
     provideHttpClient(withInterceptorsFromDi()),
+    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
     provideTranslateService({
       fallbackLang: 'en',
       loader: provideTranslateLoader(OnecxTranslateLoader),
       missingTranslationHandler: provideMissingTranslationHandler(MultiLanguageMissingTranslationHandler)
     }),
-    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
     provideStandaloneProviders(),
     provideThemeConfig(),
     provideAnimations()
