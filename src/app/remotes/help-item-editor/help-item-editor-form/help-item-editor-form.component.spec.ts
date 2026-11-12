@@ -24,7 +24,10 @@ describe('HelpItemEditorFormComponent', () => {
         add: {
           providers: [
             { provide: PortalMessageService, useValue: messageServiceSpy },
-            provideTranslateTestingService({})
+            provideTranslateTestingService({
+              de: require('/src/assets/i18n/de.json'),
+              en: require('/src/assets/i18n/en.json')
+            })
           ]
         }
       })

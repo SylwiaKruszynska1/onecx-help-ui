@@ -60,7 +60,10 @@ describe('HelpSearchComponent', () => {
         provideNoopAnimations(),
         providePermissionService(),
         provideRouter([]),
-        provideTranslateTestingService({})
+        provideTranslateTestingService({
+          de: require('/src/assets/i18n/de.json'),
+          en: require('/src/assets/i18n/en.json')
+        })
       ]
     })
       .overrideComponent(HelpSearchComponent, {

@@ -56,7 +56,10 @@ describe('OneCXHelpItemEditorComponent', () => {
         provideHttpClient(),
         provideHttpClientTesting(),
         { provide: REMOTE_COMPONENT_CONFIG, useValue: baseUrlSubject },
-        provideTranslateTestingService({})
+        provideTranslateTestingService({
+          de: require('/src/assets/i18n/de.json'),
+          en: require('/src/assets/i18n/en.json')
+        })
       ]
     })
       .overrideComponent(OneCXHelpItemEditorComponent, {

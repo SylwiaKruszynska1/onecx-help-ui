@@ -5,11 +5,11 @@ import { of, throwError } from 'rxjs'
 import FileSaver from 'file-saver'
 
 import { PortalMessageService } from '@onecx/angular-integration-interface'
+import { provideTranslateTestingService } from '@onecx/angular-testing'
 
 import { HelpsInternalAPIService } from 'src/app/shared/generated'
 import { Product } from '../help-search/help-search.component'
 import { HelpExportComponent } from './help-export.component'
-import { provideTranslateTestingService } from '@onecx/angular-testing'
 
 const product1: Product = { name: 'product1', displayName: 'Product 1' }
 const product2: Product = { name: 'product2', displayName: 'Product 2' }
@@ -30,7 +30,14 @@ describe('HelpExportComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [HelpExportComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideTranslateTestingService({})]
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideTranslateTestingService({
+          de: require('/src/assets/i18n/de.json'),
+          en: require('/src/assets/i18n/en.json')
+        })
+      ]
     })
       .overrideComponent(HelpExportComponent, {
         set: {

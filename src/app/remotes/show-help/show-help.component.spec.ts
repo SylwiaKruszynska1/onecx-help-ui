@@ -42,8 +42,8 @@ describe('OneCXShowHelpComponent', () => {
       providers: [
         { provide: REMOTE_COMPONENT_CONFIG, useValue: baseUrlSubject },
         provideTranslateTestingService({
-          de: require('../../../assets/i18n/de.json'),
-          en: require('../../../assets/i18n/en.json')
+          de: require('/src/assets/i18n/de.json'),
+          en: require('/src/assets/i18n/en.json')
         })
       ]
     })

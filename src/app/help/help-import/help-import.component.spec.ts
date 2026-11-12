@@ -33,7 +33,10 @@ describe('HelpImportComponent', () => {
           providers: [
             { provide: HelpsInternalAPIService, useValue: apiServiceSpy },
             { provide: PortalMessageService, useValue: msgServiceSpy },
-            provideTranslateTestingService({})
+            provideTranslateTestingService({
+              de: require('/src/assets/i18n/de.json'),
+              en: require('/src/assets/i18n/en.json')
+            })
           ]
         }
       })
